@@ -17,11 +17,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(multer({dest: '/tmp/'}).single('zhaojiao'));
 
 app.get('/', function (req, res) {
-  res.send('hello nice to meet you asf');
+  res.send('Hello, nice to meet you, Mavis');
 });
 
 app.get('/example.html', function(req, res) {
   res.sendFile(`${__dirname}/example.html`);
+});
+
+app.get('/src/template/react-toggle.html', function(req, res) {
+  res.sendFile(`${__dirname}/src/template/react-toggle.html`);
+});
+
+app.get('/src/template/js-node.html', function(req, res) {
+  res.sendFile(`${__dirname}/src/template/js-node.html`);
+});
+
+app.get('/src/template/upload-file.html', function(req, res) {
+  res.sendFile(`${__dirname}/src/template/upload-file.html`);
 });
 
 app.get('/process_get', function (req, res) {
