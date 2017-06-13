@@ -41,7 +41,7 @@ LikeButton.defaultProps = {// 这个方法在实例初始化之前调用,缓存�
 
 render( // 必须,组装成这个组件的HTML结构.也可以返回null或者false.
   <LikeButton />,
-  document.getElementById('example')
+  document.getElementById('reactToggle')
 );
 // 生命周期函数
 // componentWillMount,   在render之前调用.

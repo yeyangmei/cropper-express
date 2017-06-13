@@ -4,15 +4,25 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/example.js',
-  //entry: './src/react/toggle.jsx',
+  entry: {
+    pageExample: './src/js/example.js',
+    pageUpload: './src/js/upload.js',
+    pageReact: './src/react/toggle.jsx',
+    pageJsNode: './src/js/js-node.js',
+  },
   output: {
+    // 在path.resolve中使用相对路径
+    // __dirname始终指向当前js代码文件的目录。
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
     publicPath: './dist/',
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    //开启后缀自动补全功能
+    extensions: ['.js', '.jsx', '.json', '.css', '.less'],
+    // alias:{
+    //   'jquery':path.join(__dirname, 'node_modules/jquery/dist/jquery')
+    // }
   },
   module: {
     rules: [
@@ -41,6 +51,19 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url?limit=10000&mimetype=application/font-woff"
+      },
+      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=application/octet-stream" },
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&mimetype=image/svg+xml" },
+
     ]
-  }
+  },
+  // externals: {
+  //   "jquery" : "jQuery",
+  //   "lodash": "_",
+  //
+  // }
 };
